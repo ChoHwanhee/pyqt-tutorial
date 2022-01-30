@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
  
-form_class = uic.loadUiType("C:\\Users\\whanh\\pyqt tutorial\\7. Notepad-MessageBox\\notepad.ui")[0]
+form_class = uic.loadUiType("C:\\Users\\whanh\\pyqt tutorial\\8. Notepad-PlainTextEdit\\notepad.ui")[0]
 
 class WindowClass(QMainWindow, form_class):
     def __init__(self):
@@ -13,6 +13,11 @@ class WindowClass(QMainWindow, form_class):
         self.action_save.triggered.connect(self.saveFunction)
         self.action_saveas.triggered.connect(self.saveAsFuntion)
         self.action_close.triggered.connect(self.close)
+
+        self.action_undo.triggered.connect(self.undoFunction)
+        self.action_cut.triggered.connect(self.cutFunction)
+        self.action_copy.triggered.connect(self.copyFunction)
+        self.action_paste.triggered.connect(self.pasteFunction)
 
         self.opened = False
         self.opened_file_path = '제목 없음'
@@ -26,6 +31,19 @@ class WindowClass(QMainWindow, form_class):
         ret = msgBox.exec_()
         if ret == 2:
             return ret
+
+    def undoFunction(self):
+        self.plainTextEdit.undo()
+
+    def cutFunction(self):
+        self.plainTextEdit.cut()
+
+    def copyFunction(self):
+        self.plainTextEdit.copy()
+        
+    def pasteFunction(self):
+        self.plainTextEdit.paste()
+
 
     def closeEvent(self, event):
         ret = self.save_changed_data()

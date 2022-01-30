@@ -58,21 +58,51 @@
     <property name="title">
      <string>편집</string>
     </property>
+    <addaction name="action_undo"/>
+    <addaction name="separator"/>
+    <addaction name="action_cut"/>
+    <addaction name="action_copy"/>
+    <addaction name="action_paste"/>
+    <addaction name="separator"/>
+    <addaction name="action_find"/>
+    <addaction name="action_next_find"/>
+    <addaction name="action_prev_find"/>
+    <addaction name="action_find_replace"/>
+    <addaction name="action_go"/>
+    <addaction name="separator"/>
+    <addaction name="action_all_select"/>
+    <addaction name="action_datetime"/>
    </widget>
    <widget class="QMenu" name="menu_form">
     <property name="title">
      <string>서식</string>
     </property>
+    <addaction name="action_wrap"/>
+    <addaction name="action_font"/>
    </widget>
    <widget class="QMenu" name="menu_view">
     <property name="title">
      <string>보기</string>
     </property>
+    <widget class="QMenu" name="menu">
+     <property name="title">
+      <string>확대하기/축소하기</string>
+     </property>
+     <addaction name="action_zoom_in"/>
+     <addaction name="action_zoom_out"/>
+     <addaction name="action_zoom_restore"/>
+    </widget>
+    <addaction name="menu"/>
+    <addaction name="action_statusbar_view"/>
    </widget>
    <widget class="QMenu" name="menu_help">
     <property name="title">
      <string>도움말</string>
     </property>
+    <addaction name="action_help"/>
+    <addaction name="action_info"/>
+    <addaction name="separator"/>
+    <addaction name="action_30"/>
    </widget>
    <addaction name="menu_file"/>
    <addaction name="menu_edit"/>
@@ -108,6 +138,160 @@
   <action name="action_close">
    <property name="text">
     <string>끝내기</string>
+   </property>
+  </action>
+  <action name="action_wrap">
+   <property name="text">
+    <string>자동 줄 바꿈</string>
+   </property>
+  </action>
+  <action name="action_font">
+   <property name="text">
+    <string>글꼴
+</string>
+   </property>
+  </action>
+  <action name="action_undo">
+   <property name="text">
+    <string>실행취소</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="action_cut">
+   <property name="text">
+    <string>잘라내기</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="action_copy">
+   <property name="text">
+    <string>복사</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="action_paste">
+   <property name="text">
+    <string>붙여넣기</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="action_find">
+   <property name="text">
+    <string>찾기</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="action_next_find">
+   <property name="text">
+    <string>다음 찾기</string>
+   </property>
+   <property name="shortcut">
+    <string>F3</string>
+   </property>
+  </action>
+  <action name="action_prev_find">
+   <property name="text">
+    <string>이전 찾기</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+F3</string>
+   </property>
+  </action>
+  <action name="action_find_replace">
+   <property name="text">
+    <string>바꾸기</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+  </action>
+  <action name="action_go">
+   <property name="text">
+    <string>이동</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
+   </property>
+  </action>
+  <action name="action_all_select">
+   <property name="text">
+    <string>모두 선택</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="action_datetime">
+   <property name="text">
+    <string>시간/날짜</string>
+   </property>
+   <property name="shortcut">
+    <string>F5</string>
+   </property>
+  </action>
+  <action name="action_19">
+   <property name="text">
+    <string>자동 줄 바꿈</string>
+   </property>
+  </action>
+  <action name="action_20">
+   <property name="text">
+    <string>글꼴
+</string>
+   </property>
+  </action>
+  <action name="action_statusbar_view">
+   <property name="text">
+    <string>상태 표시줄</string>
+   </property>
+  </action>
+  <action name="action_zoom_in">
+   <property name="text">
+    <string>확대</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl++</string>
+   </property>
+  </action>
+  <action name="action_zoom_out">
+   <property name="text">
+    <string>축소</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="action_zoom_restore">
+   <property name="text">
+    <string>확대하기/축소하기 기본값 복원</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+0</string>
+   </property>
+  </action>
+  <action name="action_help">
+   <property name="text">
+    <string>도움말 보기</string>
+   </property>
+  </action>
+  <action name="action_info">
+   <property name="text">
+    <string>피드백 보내기</string>
+   </property>
+  </action>
+  <action name="action_30">
+   <property name="text">
+    <string>메모장 정보</string>
    </property>
   </action>
  </widget>
