@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
  
-form_class = uic.loadUiType("C:\\Users\\whanh\\pyqt tutorial\\6. Notepad-CloseEvent\\notepad.ui")[0]
+form_class = uic.loadUiType("C:\\Users\\whanh\\pyqt tutorial\\7. Notepad-MessageBox\\notepad.ui")[0]
 
 class WindowClass(QMainWindow, form_class):
     def __init__(self):
@@ -15,9 +15,22 @@ class WindowClass(QMainWindow, form_class):
         self.action_close.triggered.connect(self.close)
 
         self.opened = False
-        self.opened_file_path = ''
+        self.opened_file_path = '제목 없음'
+
+    def save_changed_data(self):
+        msgBox = QMessageBox()
+        msgBox.setText("변경 내용을 {}에 저장하시겠습니까?".format(self.opened_file_path))
+        msgBox.addButton("저장", QMessageBox.YesRole) #0
+        msgBox.addButton("저장 안 함", QMessageBox.NoRole) #1
+        msgBox.addButton("취소", QMessageBox.RejectRole) #2
+        ret = msgBox.exec_()
+        if ret == 2:
+            return ret
 
     def closeEvent(self, event):
+        ret = self.save_changed_data()
+        if ret == 2:
+            event.ignore()
         print("close test")
         # event.ignore()
 
