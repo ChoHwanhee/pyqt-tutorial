@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 
-form_class = uic.loadUiType("C:\\Users\\hwanhee\\pyqt tutorial\\3. Notepad-Menubar\\notepad.ui")[0]
+form_class = uic.loadUiType("C:\\Users\\hwanhee\\pyqt tutorial\\4. Notepad-OpenSave\\notepad.ui")[0]
 
 class WindowClass(QMainWindow, form_class):
     def __init__(self):
@@ -13,10 +13,23 @@ class WindowClass(QMainWindow, form_class):
         self.action_save.triggered.connect(self.saveFunction)
 
     def openFunction(self):
-        print("open!!")
+        fname = QFileDialog.getOpenFileName(self)
+        if fname[0]:
+            with open(fname[0], encoding='UTF8') as f:
+                data = f.read()
+            self.plainTextEdit.setPlainText(data)
+
+            print("open {}!!".format(fname[0]))
 
     def saveFunction(self):
-        print("save!!")
+        fname = QFileDialog.getSaveFileName(self)
+        if fname[0]:
+            data = self.plainTextEdit.toPlainText()
+
+            with open(fname[0], 'w', encoding='UTF8') as f:
+                data = f.write(data)
+
+            print("save {}!!".format(fname[0]))
         
 app = QApplication(sys.argv)
 mainWindow = WindowClass()
