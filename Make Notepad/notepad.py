@@ -2,7 +2,15 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
  
-form_class = uic.loadUiType("C:\\Users\\whanh\\pyqt tutorial\\8. Notepad-PlainTextEdit\\notepad.ui")[0]
+form_class = uic.loadUiType("C:\\Users\\whanh\\pyqt tutorial\\9. Notepad-Find\\notepad.ui")[0]
+
+
+class findWindow(QDialog):
+    def __init__(self, parent):
+        super(findWindow, self).__init__(parent)
+        uic.loadUi("C:\\Users\\whanh\\pyqt tutorial\\9. Notepad-Find\\find.ui", self)
+        self.show()
+
 
 class WindowClass(QMainWindow, form_class):
     def __init__(self):
@@ -18,6 +26,8 @@ class WindowClass(QMainWindow, form_class):
         self.action_cut.triggered.connect(self.cutFunction)
         self.action_copy.triggered.connect(self.copyFunction)
         self.action_paste.triggered.connect(self.pasteFunction)
+
+        self.action_find.triggered.connect(self.findFunction)
 
         self.opened = False
         self.opened_file_path = '제목 없음'
@@ -90,7 +100,10 @@ class WindowClass(QMainWindow, form_class):
         fname = QFileDialog.getSaveFileName(self)
         if fname[0]:
             self.save_file(fname[0]) 
-        
+    
+    def findFunction(self):
+        findWindow(self)
+
 app = QApplication(sys.argv)
 mainWindow = WindowClass()
 mainWindow.show()
