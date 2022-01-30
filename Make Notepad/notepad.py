@@ -1,8 +1,8 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
-
-form_class = uic.loadUiType("C:\\Users\\whanh\\pyqt tutorial\\5. Notepad-SaveAs\\notepad.ui")[0]
+ 
+form_class = uic.loadUiType("C:\\Users\\whanh\\pyqt tutorial\\6. Notepad-CloseEvent\\notepad.ui")[0]
 
 class WindowClass(QMainWindow, form_class):
     def __init__(self):
@@ -12,9 +12,15 @@ class WindowClass(QMainWindow, form_class):
         self.action_open.triggered.connect(self.openFunction)
         self.action_save.triggered.connect(self.saveFunction)
         self.action_saveas.triggered.connect(self.saveAsFuntion)
+        self.action_close.triggered.connect(self.close)
 
         self.opened = False
         self.opened_file_path = ''
+
+    def closeEvent(self, event):
+        print("close test")
+        # event.ignore()
+
     
     def save_file(self, fname):
         data = self.plainTextEdit.toPlainText()
